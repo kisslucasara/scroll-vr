@@ -38,18 +38,18 @@ const navDirections = [
 // =====================================================
 
 const motivationalMessages = [
-    "You're doing amazing! ✨",
-    "Great progress! 💪",
-    "Keep scrolling! 🔥",
-    "Amazing dedication! 🌟",
-    "You're unstoppable! 💫",
-    "Don't stop now! ⭐",
-    "You're in the zone! 🌊",
-    "Incredible focus! 🎯",
-    "So proud of you! 💖",
-    "You're a natural! 🚀",
-    "Pure dedication! 🙌",
-    "You're crushing it! 💎"
+    "You're doing amazing!",
+    "Great progress!",
+    "Keep scrolling!",
+    "Amazing dedication!",
+    "You're unstoppable!",
+    "Don't stop now!",
+    "You're in the zone!",
+    "Incredible focus!",
+    "So proud of you!",
+    "You're a natural!",
+    "Pure dedication!",
+    "You're crushing it!"
 ];
 
 // =====================================================

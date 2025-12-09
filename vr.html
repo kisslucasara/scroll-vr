@@ -24,8 +24,6 @@
         </div>
     </div>
 
-
-
     <!-- A-Frame VR Scene -->
     <a-scene id="vrScene" vr-mode-ui="enabled: true" device-orientation-permission-ui="enabled: true">
         
@@ -54,57 +52,64 @@
             position="0 0 0">
             
             <!-- VR Navigation Bar (top, follows head) -->
-            <a-entity id="vrNavSimulation" position="0 0.7 -2">
-                <a-rounded 
-                    color="#000" 
-                    opacity="0.75" 
-                    width="1.4" 
-                    height="0.28"
-                    radius="0.14"
-                    position="0 0 -0.01">
-                </a-rounded>
+            <a-entity id="vrNavSimulation" position="0 0.6 -1.5">
+                <!-- Background box -->
+                <a-box 
+                    color="#000000" 
+                    opacity="0.8" 
+                    width="1.0" 
+                    height="0.2"
+                    depth="0.02"
+                    position="0 0 0">
+                </a-box>
+                <!-- Arrow -->
                 <a-text 
                     id="vrNavArrow"
                     value="→" 
-                    position="-0.45 0 0"
+                    position="-0.35 0 0.02"
                     align="center"
                     color="#4ade80"
-                    scale="0.7 0.7 0.7">
+                    scale="0.5 0.5 0.5">
                 </a-text>
+                <!-- Direction text -->
                 <a-text 
                     id="vrNavText"
                     value="Turn right" 
-                    position="0.2 0 0"
+                    position="0.15 0 0.02"
                     align="center"
                     color="#ffffff"
-                    scale="0.4 0.4 0.4">
+                    scale="0.3 0.3 0.3">
                 </a-text>
             </a-entity>
             
             <!-- VR Motivational Popup (center, follows head) -->
-            <a-entity id="vrMotivationalPopup" position="0 0 -2" visible="false">
-                <a-rounded 
+            <a-entity id="vrMotivationalPopup" position="0 0 -1.5" visible="false">
+                <!-- Background box -->
+                <a-box 
                     color="#0a0a0a" 
-                    opacity="0.92" 
-                    width="2.2" 
-                    height="0.9"
-                    radius="0.1">
-                </a-rounded>
+                    opacity="0.9" 
+                    width="1.4" 
+                    height="0.5"
+                    depth="0.02"
+                    position="0 0 0">
+                </a-box>
+                <!-- Time text -->
                 <a-text 
                     id="vrPopupTime"
                     value="1 hour" 
-                    position="0 0.18 0.01"
+                    position="0 0.1 0.02"
                     align="center"
                     color="#ffffff"
-                    scale="0.8 0.8 0.8">
+                    scale="0.5 0.5 0.5">
                 </a-text>
+                <!-- Message text -->
                 <a-text 
                     id="vrPopupMessage"
                     value="You're doing amazing!" 
-                    position="0 -0.12 0.01"
+                    position="0 -0.08 0.02"
                     align="center"
                     color="#888888"
-                    scale="0.35 0.35 0.35">
+                    scale="0.25 0.25 0.25">
                 </a-text>
             </a-entity>
         </a-camera>
