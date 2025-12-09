@@ -1,0 +1,87 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <title>Scroll - Presentation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-presentation.css">
+</head>
+<body>
+    <!-- Start Screen -->
+    <div id="startScreen">
+        <div class="start-content">
+            <div class="start-icon">▶</div>
+            <div class="start-text">TAP TO START</div>
+        </div>
+    </div>
+
+    <!-- Navigation Simulation (GPS-like) -->
+    <div id="navSimulation" class="hidden">
+        <div class="nav-arrow-icon" id="navArrowIcon">→</div>
+        <div class="nav-instruction" id="navInstruction">Turn right</div>
+    </div>
+
+    <!-- Motivational Popup -->
+    <div id="motivationalPopup" class="hidden">
+        <div class="popup-time" id="popupTime">1 hour</div>
+        <div class="popup-message" id="popupMessage">You're doing amazing! Keep going ✨</div>
+    </div>
+
+    <!-- Social UI -->
+    <div id="social-ui" class="hidden">
+        <div class="social-buttons">
+            <div class="social-btn" id="likeBtn">
+                <div class="social-icon">❤</div>
+                <div class="social-count" id="likeCount">45.2K</div>
+            </div>
+            
+            <div class="social-btn" id="commentBtn">
+                <div class="social-icon">💬</div>
+                <div class="social-count" id="commentCount">2.1K</div>
+            </div>
+            
+            <div class="social-btn" id="shareBtn">
+                <div class="social-icon">↗</div>
+                <div class="social-count">Share</div>
+            </div>
+            
+            <div class="social-btn" id="bookmarkBtn">
+                <div class="social-icon">💾</div>
+                <div class="social-count">Save</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Creator Info -->
+    <div class="creator-info hidden" id="creatorInfo">
+        <div class="creator-avatar">SC</div>
+        <div class="creator-details">
+            <div class="creator-name" id="creatorName">@scrolladdict</div>
+            <div class="creator-caption">Just another scroll 🔄 #fyp</div>
+        </div>
+    </div>
+
+    <!-- Video Navigation Arrows -->
+    <div class="video-nav hidden" id="videoNav">
+        <div class="video-nav-arrow" id="prevArrow">‹</div>
+        <div class="video-nav-arrow" id="nextArrow">›</div>
+    </div>
+
+    <!-- Saved Notification -->
+    <div id="savedNotification">
+        <span class="saved-icon">✓</span>
+        <span class="saved-text">Saved to device</span>
+    </div>
+
+    <!-- Video Container -->
+    <div id="videoContainer"></div>
+
+    <script src="script-presentation.js"></script>
+</body>
+</html>
