@@ -99,9 +99,6 @@ function init() {
     elements.socialUI = document.getElementById('social-ui');
     elements.creatorInfo = document.getElementById('creatorInfo');
     elements.creatorName = document.getElementById('creatorName');
-    elements.videoNav = document.getElementById('videoNav');
-    elements.prevArrow = document.getElementById('prevArrow');
-    elements.nextArrow = document.getElementById('nextArrow');
     elements.likeBtn = document.getElementById('likeBtn');
     elements.likeCount = document.getElementById('likeCount');
     elements.bookmarkBtn = document.getElementById('bookmarkBtn');
@@ -153,7 +150,6 @@ function startExperience() {
     elements.navSimulation.classList.remove('hidden');
     elements.socialUI.classList.remove('hidden');
     elements.creatorInfo.classList.remove('hidden');
-    elements.videoNav.classList.remove('hidden');
     
     // Show and play first video
     showVideo(0);
@@ -212,10 +208,6 @@ function setupButtons() {
         e.preventDefault();
         toggleSave();
     });
-    
-    // Navigation
-    elements.prevArrow.addEventListener('click', goToPrev);
-    elements.nextArrow.addEventListener('click', goToNext);
 }
 
 function toggleLike() {
@@ -253,20 +245,8 @@ function showSavedNotification() {
 }
 
 // =====================================================
-// VIDEO NAVIGATION
+// AUTO SCROLL
 // =====================================================
-
-function goToPrev() {
-    state.currentVideo--;
-    if (state.currentVideo < 1) state.currentVideo = CONFIG.totalVideos;
-    switchVideo();
-}
-
-function goToNext() {
-    state.currentVideo++;
-    if (state.currentVideo > CONFIG.totalVideos) state.currentVideo = 1;
-    switchVideo();
-}
 
 function switchVideo() {
     showVideo(state.currentVideo - 1);
@@ -293,12 +273,12 @@ function updateUI() {
     }
 }
 
-// =====================================================
-// AUTO SCROLL
-// =====================================================
-
 function startAutoScroll() {
-    setInterval(goToNext, CONFIG.autoScrollInterval);
+    setInterval(() => {
+        state.currentVideo++;
+        if (state.currentVideo > CONFIG.totalVideos) state.currentVideo = 1;
+        switchVideo();
+    }, CONFIG.autoScrollInterval);
 }
 
 // =====================================================

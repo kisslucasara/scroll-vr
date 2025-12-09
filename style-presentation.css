@@ -302,45 +302,6 @@ body {
 }
 
 /* =====================================================
-   VIDEO NAVIGATION ARROWS
-   ===================================================== */
-
-.video-nav {
-    position: fixed;
-    left: 24px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    z-index: 998;
-}
-
-.video-nav-arrow {
-    width: 52px;
-    height: 52px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    user-select: none;
-}
-
-.video-nav-arrow:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
-}
-
-.video-nav-arrow:active {
-    transform: scale(0.95);
-}
-
-/* =====================================================
    SAVED NOTIFICATION
    ===================================================== */
 
@@ -436,11 +397,5 @@ body {
     
     .creator-caption {
         font-size: 13px;
-    }
-    
-    .video-nav-arrow {
-        width: 46px;
-        height: 46px;
-        font-size: 28px;
     }
 }
