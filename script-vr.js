@@ -59,8 +59,7 @@ const motivationalMessages = [
 const state = {
     currentVideo: 1,
     hasStarted: false,
-    fakeHours: 0,
-    isInVR: false
+    fakeHours: 0
 };
 
 // =====================================================
@@ -86,12 +85,6 @@ function init() {
 function onSceneLoaded() {
     // Get elements
     elements.startScreen = document.getElementById('startScreen');
-    elements.navSimulation = document.getElementById('navSimulation');
-    elements.navArrowIcon = document.getElementById('navArrowIcon');
-    elements.navInstruction = document.getElementById('navInstruction');
-    elements.motivationalPopup = document.getElementById('motivationalPopup');
-    elements.popupTime = document.getElementById('popupTime');
-    elements.popupMessage = document.getElementById('popupMessage');
     elements.videoSphere = document.getElementById('videoSphere');
     elements.vrScene = document.getElementById('vrScene');
     
@@ -112,36 +105,11 @@ function onSceneLoaded() {
         }
     }
     
-    // Set up VR mode detection
-    setupVRDetection();
-    
     // Set up start screen
     elements.startScreen.addEventListener('click', startExperience);
     elements.startScreen.addEventListener('touchstart', (e) => {
         e.preventDefault();
         startExperience();
-    });
-}
-
-// =====================================================
-// VR MODE DETECTION
-// =====================================================
-
-function setupVRDetection() {
-    const scene = document.querySelector('a-scene');
-    
-    scene.addEventListener('enter-vr', () => {
-        state.isInVR = true;
-        // Hide 2D elements
-        elements.navSimulation.classList.add('vr-hidden');
-        elements.motivationalPopup.classList.add('vr-hidden');
-    });
-    
-    scene.addEventListener('exit-vr', () => {
-        state.isInVR = false;
-        // Show 2D elements
-        elements.navSimulation.classList.remove('vr-hidden');
-        elements.motivationalPopup.classList.remove('vr-hidden');
     });
 }
 
@@ -155,9 +123,6 @@ function startExperience() {
     
     // Hide start screen
     elements.startScreen.classList.add('hidden');
-    
-    // Show nav simulation
-    elements.navSimulation.classList.remove('hidden');
     
     // Start video
     playCurrentVideo();
@@ -216,10 +181,6 @@ function updateNav() {
     const index = Math.floor(Math.random() * navDirections.length);
     const direction = navDirections[index];
     
-    // Update 2D nav
-    elements.navArrowIcon.textContent = direction.arrow;
-    elements.navInstruction.textContent = direction.text;
-    
     // Update VR nav
     if (elements.vrNavArrow) {
         elements.vrNavArrow.setAttribute('value', direction.arrow);
@@ -247,31 +208,18 @@ function showMotivationalPopup() {
     const messageIndex = Math.floor(Math.random() * motivationalMessages.length);
     const message = motivationalMessages[messageIndex];
     
-    if (state.isInVR) {
-        // Show VR popup
-        if (elements.vrPopupTime) {
-            elements.vrPopupTime.setAttribute('value', timeText);
-        }
-        if (elements.vrPopupMessage) {
-            elements.vrPopupMessage.setAttribute('value', message);
-        }
-        if (elements.vrMotivationalPopup) {
-            elements.vrMotivationalPopup.setAttribute('visible', true);
-            
-            setTimeout(() => {
-                elements.vrMotivationalPopup.setAttribute('visible', false);
-            }, CONFIG.popupDuration);
-        }
-    } else {
-        // Show 2D popup
-        elements.popupTime.textContent = timeText;
-        elements.popupMessage.textContent = message;
-        elements.motivationalPopup.classList.remove('hidden');
-        elements.motivationalPopup.classList.add('show');
+    // Show VR popup
+    if (elements.vrPopupTime) {
+        elements.vrPopupTime.setAttribute('value', timeText);
+    }
+    if (elements.vrPopupMessage) {
+        elements.vrPopupMessage.setAttribute('value', message);
+    }
+    if (elements.vrMotivationalPopup) {
+        elements.vrMotivationalPopup.setAttribute('visible', true);
         
         setTimeout(() => {
-            elements.motivationalPopup.classList.remove('show');
-            setTimeout(() => elements.motivationalPopup.classList.add('hidden'), 500);
+            elements.vrMotivationalPopup.setAttribute('visible', false);
         }, CONFIG.popupDuration);
     }
 }
