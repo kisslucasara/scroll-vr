@@ -59,63 +59,69 @@
             
             <!-- VR Navigation Bar (top, follows head) -->
             <a-entity id="vrNavSimulation" position="0 0.6 -1.5">
-                <!-- Background box -->
+                <!-- Background box - wider to accommodate side-by-side layout -->
                 <a-box 
                     color="#000000" 
-                    opacity="0.8" 
-                    width="1.0" 
-                    height="0.2"
+                    opacity="0.75" 
+                    width="1.4" 
+                    height="0.24"
                     depth="0.02"
-                    position="0 0 0">
+                    position="0 0 0"
+                    material="transparent: true">
                 </a-box>
-                <!-- Arrow -->
+                <!-- Arrow on the left -->
                 <a-text 
                     id="vrNavArrow"
                     value="→" 
-                    position="-0.35 0 0.02"
+                    position="-0.5 0 0.02"
                     align="center"
                     color="#4ade80"
-                    scale="0.5 0.5 0.5">
+                    width="2"
+                    scale="0.4 0.4 0.4">
                 </a-text>
-                <!-- Direction text -->
+                <!-- Direction text on the right -->
                 <a-text 
                     id="vrNavText"
                     value="Turn right" 
-                    position="0.15 0 0.02"
-                    align="center"
+                    position="0.1 0 0.02"
+                    align="left"
                     color="#ffffff"
-                    scale="0.3 0.3 0.3">
+                    width="2"
+                    scale="0.32 0.32 0.32">
                 </a-text>
             </a-entity>
             
             <!-- VR Motivational Popup (center, follows head) -->
             <a-entity id="vrMotivationalPopup" position="0 0 -1.5" visible="false">
-                <!-- Background box -->
+                <!-- Background box - darker and more prominent -->
                 <a-box 
                     color="#0a0a0a" 
-                    opacity="0.9" 
-                    width="1.4" 
-                    height="0.5"
+                    opacity="0.92" 
+                    width="1.6" 
+                    height="0.6"
                     depth="0.02"
-                    position="0 0 0">
+                    position="0 0 0"
+                    material="transparent: true">
                 </a-box>
-                <!-- Time text -->
+                <!-- Time text - larger and more prominent -->
                 <a-text 
                     id="vrPopupTime"
                     value="1 hour" 
-                    position="0 0.1 0.02"
+                    position="0 0.12 0.02"
                     align="center"
                     color="#ffffff"
-                    scale="0.5 0.5 0.5">
+                    width="2.5"
+                    scale="0.6 0.6 0.6">
                 </a-text>
-                <!-- Message text -->
+                <!-- Message text - clearer gray -->
                 <a-text 
                     id="vrPopupMessage"
                     value="You're doing amazing!" 
-                    position="0 -0.08 0.02"
+                    position="0 -0.1 0.02"
                     align="center"
-                    color="#888888"
-                    scale="0.25 0.25 0.25">
+                    color="#aaaaaa"
+                    width="2.5"
+                    scale="0.3 0.3 0.3">
                 </a-text>
             </a-entity>
         </a-camera>
