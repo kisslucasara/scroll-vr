@@ -25,23 +25,29 @@
     </div>
 
     <!-- A-Frame VR Scene -->
-    <a-scene id="vrScene" vr-mode-ui="enabled: true" device-orientation-permission-ui="enabled: true">
+    <a-scene id="vrScene" 
+             vr-mode-ui="enabled: true" 
+             device-orientation-permission-ui="enabled: true"
+             renderer="antialias: false; colorManagement: true; sortObjects: true; physicallyCorrectLights: false; maxCanvasWidth: 1920; maxCanvasHeight: 1920;"
+             loading-screen="enabled: false">
         
         <a-assets>
             <video id="video1" src="videos/video1.mp4" loop muted preload="auto" crossorigin="anonymous" playsinline webkit-playsinline></video>
-            <video id="video2" src="videos/video2.mp4" loop muted preload="auto" crossorigin="anonymous" playsinline webkit-playsinline></video>
-            <video id="video3" src="videos/video3.mp4" loop muted preload="auto" crossorigin="anonymous" playsinline webkit-playsinline></video>
-            <video id="video4" src="videos/video4.mp4" loop muted preload="auto" crossorigin="anonymous" playsinline webkit-playsinline></video>
-            <video id="video5" src="videos/video5.mp4" loop muted preload="auto" crossorigin="anonymous" playsinline webkit-playsinline></video>
-            <video id="video6" src="videos/video6.mp4" loop muted preload="auto" crossorigin="anonymous" playsinline webkit-playsinline></video>
-            <video id="video7" src="videos/video7.mp4" loop muted preload="auto" crossorigin="anonymous" playsinline webkit-playsinline></video>
+            <video id="video2" src="videos/video2.mp4" loop muted preload="metadata" crossorigin="anonymous" playsinline webkit-playsinline></video>
+            <video id="video3" src="videos/video3.mp4" loop muted preload="metadata" crossorigin="anonymous" playsinline webkit-playsinline></video>
+            <video id="video4" src="videos/video4.mp4" loop muted preload="metadata" crossorigin="anonymous" playsinline webkit-playsinline></video>
+            <video id="video5" src="videos/video5.mp4" loop muted preload="metadata" crossorigin="anonymous" playsinline webkit-playsinline></video>
+            <video id="video6" src="videos/video6.mp4" loop muted preload="metadata" crossorigin="anonymous" playsinline webkit-playsinline></video>
+            <video id="video7" src="videos/video7.mp4" loop muted preload="metadata" crossorigin="anonymous" playsinline webkit-playsinline></video>
         </a-assets>
         
         <!-- 360 Video Sphere -->
         <a-videosphere 
             id="videoSphere"
             src="#video1"
-            rotation="0 -90 0">
+            rotation="0 -90 0"
+            segments-width="32"
+            segments-height="16">
         </a-videosphere>
         
         <!-- Camera with floating VR UI -->

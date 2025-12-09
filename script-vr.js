@@ -95,12 +95,14 @@ function onSceneLoaded() {
     elements.vrPopupTime = document.getElementById('vrPopupTime');
     elements.vrPopupMessage = document.getElementById('vrPopupMessage');
     
-    // Get videos
+    // Get videos and optimize them
     elements.videos = [];
     for (let i = 1; i <= CONFIG.totalVideos; i++) {
         const video = document.getElementById(`video${i}`);
         if (video) {
             video.muted = true;
+            video.playbackRate = 1.0; // Ensure normal playback rate
+            video.load(); // Preload videos
             elements.videos.push(video);
         }
     }
@@ -142,15 +144,34 @@ function startExperience() {
 // =====================================================
 
 function playCurrentVideo() {
-    // Pause all
-    elements.videos.forEach(v => v.pause());
+    const currentIndex = state.currentVideo - 1;
+    const currentVideo = elements.videos[currentIndex];
     
-    // Set source and play
+    if (!currentVideo) return;
+    
+    // Pause all other videos
+    elements.videos.forEach((v, i) => {
+        if (i !== currentIndex) {
+            v.pause();
+        }
+    });
+    
+    // Prepare current video
+    currentVideo.currentTime = 0;
+    
+    // Update sphere source
     elements.videoSphere.setAttribute('src', `#video${state.currentVideo}`);
-    const video = elements.videos[state.currentVideo - 1];
-    if (video) {
-        video.currentTime = 0;
-        video.play().catch(e => console.log('Video play error:', e));
+    
+    // Play with error handling
+    const playPromise = currentVideo.play();
+    if (playPromise !== undefined) {
+        playPromise.catch(e => {
+            console.log('Video play error:', e);
+            // Retry once after a short delay
+            setTimeout(() => {
+                currentVideo.play().catch(err => console.log('Retry failed:', err));
+            }, 100);
+        });
     }
 }
 
