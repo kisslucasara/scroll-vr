@@ -307,7 +307,7 @@ body {
 
 .video-nav {
     position: fixed;
-    right: 24px;
+    left: 24px;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
